@@ -1,4 +1,4 @@
-var user = require('../model/userModel');
+var userModel = require('../model/userModel');
 var subscriptionModel = require('../model/subscriptionModel');
 
 exports.toggleSubscription = (req, res) => {
@@ -56,9 +56,35 @@ exports.newSubscription = (req, res) => {
         });
 };
 
+exports.addCredit = (req, res) => {
+    console.log('hello from addCredit!!');
+    userModel
+        .findByIdAndUpdate(req.body.id, {
+            $inc: {
+                credit: req.body.credit,
+            },
+        })
+        .then((user) => {
+            console.log('credit changed');
+
+            res.status(200).json({
+                status: 'success',
+                message: `user ${user.username} saved successfully`,
+                credit: user.credit + credit,
+            });
+        })
+        .catch((error) => {
+            res.status(500).json({
+                status: 'error',
+                message: `error: ${error.message}}`,
+            });
+        });
+};
+
 exports.createUser = (req, res) => {
     console.log('hello from createUser!!');
-    user.create(req.body)
+    userModel
+        .create(req.body)
         .then((newUser) => {
             console.log('new person saved');
             console.log(newUser);

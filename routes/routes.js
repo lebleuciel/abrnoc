@@ -10,6 +10,7 @@ router.get('/showAllInvoices', getControllers.showAllInvoices);
 router.get('/showAllExpences', getControllers.showAllExpences);
 
 router.post('/createUser', postControllers.createUser);
+router.post('/addCredit', postControllers.addCredit);
 router.post('/newSubscription', postControllers.newSubscription);
 router.post('/toggleSubscription', postControllers.toggleSubscription);
 
