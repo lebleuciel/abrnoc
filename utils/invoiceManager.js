@@ -59,4 +59,4 @@ exports.runner = () => {
         });
 };
 
-setInterval(exports.runner, 10000);
+setInterval(exports.runner, process.env.INVOICE_RUNNER_INTERVAL);

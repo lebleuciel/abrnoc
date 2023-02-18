@@ -115,7 +115,7 @@ exports.showAllExpences = (req, res) => {
                         total_price: 0,
                         invoice_count: 0,
                     };
-                console.log(result);
+
                 result[row.subscription_id].total_price += row.price;
                 result[row.subscription_id].invoice_count += 1;
             });
