@@ -3,7 +3,6 @@ var subscriptionModel = require('../model/subscriptionModel');
 var invoiceModel = require('../model/invoiceModel');
 
 exports.runner = () => {
-    console.log('run');
     subscriptionModel
         .find({
             status: 'active',
