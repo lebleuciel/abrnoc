@@ -1,6 +1,10 @@
 const express = require('express');
 
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+var router = require('./routes/routes');
 
 app.route('/health').get((req, res) =>
     res.status(200).json({
@@ -10,5 +14,7 @@ app.route('/health').get((req, res) =>
         },
     })
 );
+
+app.use(router);
 
 exports.routes = app;
