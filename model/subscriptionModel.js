@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 var userModel = require('../model/userModel');
 
 const subscriptionSchema = new mongoose.Schema({
@@ -22,7 +23,6 @@ const subscriptionSchema = new mongoose.Schema({
     user_id: {
         type: String,
         required: [true, 'you should enter subscription user_id'],
-        ref: 'users',
         validate: {
             isAsync: true,
             validator: function (id) {
@@ -41,10 +41,13 @@ const subscriptionSchema = new mongoose.Schema({
             message: 'User with id {VALUE} does not exist.',
         },
     },
+    last_invoice_time: {
+        type: Date,
+        default: Date.now(),
+    },
     created_at: {
         type: Date,
-        required: true,
-        default: Date.now,
+        default: Date.now(),
     },
 });
 

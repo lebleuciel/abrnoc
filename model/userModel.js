@@ -8,13 +8,12 @@ const userSchema = new mongoose.Schema({
     },
     credit: {
         type: Number,
-        unique: false,
         default: 0,
     },
     created_at: {
         type: Date,
         required: true,
-        default: Date.now,
+        default: Date.now(),
     },
 });
 

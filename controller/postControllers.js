@@ -7,6 +7,7 @@ exports.toggleSubscription = (req, res) => {
     subscriptionModel
         .findByIdAndUpdate(req.body.id, {
             status: req.body.status,
+            last_invoice_time: Date.now(),
         })
         .then((subscription) => {
             if (!subscription)
@@ -57,7 +58,6 @@ exports.newSubscription = (req, res) => {
 
 exports.createUser = (req, res) => {
     console.log('hello from createUser!!');
-
     user.create(req.body)
         .then((newUser) => {
             console.log('new person saved');
